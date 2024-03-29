@@ -1,10 +1,10 @@
 # Pset 4: Web Application (Version 2)
 
-### Due Friday Nov 17 11:59 PM NHT (New Haven Time)
+### Due Friday April 12 11:59 PM NHT (New Haven Time)
 
 ## Table of Contents
 - [Pset 4: Web Application (Version 2)](#pset-4-web-application-version-2)
-    - [Due Friday Nov 17 11:59 PM NHT (New Haven Time)](#due-friday-nov-17-1159-pm-nht-new-haven-time)
+    - [Due Friday April 12 11:59 PM NHT (New Haven Time)](#due-friday-april-12-1159-pm-nht-new-haven-time)
   - [Table of Contents](#table-of-contents)
   - [Purpose](#purpose)
   - [Rules](#rules)
@@ -51,14 +51,7 @@ Your `README` file and your source code files must contain your name and your te
 > Since you made it here, you can safely ignore this section.
 
 
-1. Accept [this GitHub classroom assignment](https://classroom.github.com/a/IVxXQbbN).
-    * **Due to several students dropping the course at the midterm deadline, some groups have new members. You will create a new GitHub Classroom Group for this assignment!**
-    * GitHub classroom will ask you to create a team, whether you will be working in pairs or individually.
-        * **Name this team identically to your Canvas Pset Partner group**, *e.g.* "Pset Partner Group 13".
-    * Let your other team member join your team.
-    * This step creates a GitHub repository for your team and links your team members' GitHub ids.
-        * If you do not have a GitHub account, you are required to create one for this course
-    * Use this git repository to track your assignment development.
+1. Accept [this GitHub classroom assignment](). TODO: update
 
 2. Download the `lux.sqlite` database file from Canvas (or copy it over from your previous assignment) and place it in your new repository folder.
   > **Important**: Do not track `lux.sqlite` in your git repository.
@@ -187,7 +180,7 @@ The webpage returned at this endpoint must satisfy the following requirements:
 
   * Its information must be well-formatted (_e.g._, the headers must be within semantic HTML `<h`*`N`*`>` header elements, and the lists must be within HTML `<ul>` elements)
   * Unlike pset 3, the secondary page must not provide a link back to the primary webpage.
-    Instead, the secondary webpage must be displayed by default in a new tab or window.
+    Instead, the secondary webpage must be displayed by default in a **new** tab or window.
 
     > **Note**: Read about the `target="_blank"` attribute of the `a` element
 
@@ -257,8 +250,6 @@ SQLite does, in a sense, [support materialization](https://www.sqlite.org/lang_w
 ## Object-Relational Mappers
 For this assignment, you may use the [`SQLAlcehemy` ORM](https://www.sqlalchemy.org/) to aid you in your SQL queries.
 You are not required to do so, but as with the additional activites for 519 students, doing so may serve as valuable experience if you choose to use SQLAlchemy in your final project or other endeavors.
-
-Some useful materials are included in this template repository to tide you over until we cover it in class (which may be after the deadline for this assignment).
 
 ---
 ## Specific Endpoints
@@ -398,7 +389,7 @@ Thanks.
 
 ### Late Submissions
 
-The deadline for this assignment is **11:59 PM NHT (New Haven Time) on Friday Nov 17, 2023**.
+The deadline for this assignment is **11:59 PM NHT (New Haven Time) on Friday April 12, 2024**.
 There is a strict 30 minute grace period beyond the deadline, to be used in case of technical or administrative difficulties, and not for putting final touches on your solution.
 
 Late submissions will receive a 5% deduction for every 12-hour period (or part thereof) after the deadline.
@@ -428,4 +419,4 @@ Partial credit will be given only if there is an *obvious* "quick fix" (*e.g.*, 
 
 Original copyright &copy;2021 by Robert M. Dondero, Jr.
 
-Modified &copy;2023 by Alan Weide
+Modified &copy;2024 by Alan Weide
