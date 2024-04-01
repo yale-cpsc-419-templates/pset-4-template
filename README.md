@@ -51,7 +51,7 @@ Your `README` file and your source code files must contain your name and your te
 > Since you made it here, you can safely ignore this section.
 
 
-1. Accept [this GitHub classroom assignment](). TODO: update
+1. Accept [this GitHub classroom assignment](https://classroom.github.com/a/KQb9n60c).
 
 2. Download the `lux.sqlite` database file from Canvas (or copy it over from your previous assignment) and place it in your new repository folder.
   > **Important**: Do not track `lux.sqlite` in your git repository.
