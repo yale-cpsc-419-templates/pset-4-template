@@ -206,7 +206,7 @@ They will not have any bearing on your grade for this assignment, but they will 
 
 If you *or your partner* are enrolled in CPSC 519, you must implement the following additional feature.
 
-1. Large result sets are cumbersome for a user to scroll through.
+* Large result sets are cumbersome for a user to scroll through.
    A standard technique to reduce the burden on users is **pagination**.
    A paginated results table would display only $k$ items at a time, and display a row of buttons that the user could use to go to the next page or previous page (or even a particular page)
    * You are required to implement pagination for your app, which must display no more than `10` items per page, and you must provide a button to go to the next page and a button to go to the previous page
@@ -220,7 +220,9 @@ If you *or your partner* are enrolled in CPSC 519, you must implement the follow
     > In particular, if you return an HTML table from the server in response to a search request, that may be challenging to slice up into pages.
     > However, if you return a JSON list of objects, there are built-in JavaScript functions that will help you pick out chunks of the list.
 
-2. The sorting algorithm required by your program is quite inflexible, and it would be nice if users could sort results however they want.
+If you *and your partner* are enrolled in CPSC 519, you must implement the following additional feature.
+
+* The sorting algorithm required by your program is quite inflexible, and it would be nice if users could sort results however they want.
    * Make (part of) the column header cells clickable, and respond to a click in a column header by sorting the results in ascending order of the values in that column
      * Secondary and tertiary sorting should follow the same algorithm described in Pset 1
      * Sorting by the Agent list must be done by the **name** of the **first** agent in the list
