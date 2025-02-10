@@ -1,10 +1,10 @@
 # Pset 4: Web Application (Version 2)
 
-### Due Friday April 12 11:59 PM NHT (New Haven Time)
+### Due Friday April 11 11:59 PM NHT (New Haven Time)
 
 ## Table of Contents
 - [Pset 4: Web Application (Version 2)](#pset-4-web-application-version-2)
-    - [Due Friday April 12 11:59 PM NHT (New Haven Time)](#due-friday-april-12-1159-pm-nht-new-haven-time)
+    - [Due Friday April 11 11:59 PM NHT (New Haven Time)](#due-friday-april-11-1159-pm-nht-new-haven-time)
   - [Table of Contents](#table-of-contents)
   - [Purpose](#purpose)
   - [Rules](#rules)
@@ -51,7 +51,7 @@ Your `README` file and your source code files must contain your name and your te
 > Since you made it here, you can safely ignore this section.
 
 
-1. Accept [this GitHub classroom assignment](https://classroom.github.com/a/KQb9n60c).
+1. Accept the GitHub classroom assignment.
 
 2. Download the `lux.sqlite` database file from Canvas (or copy it over from your previous assignment) and place it in your new repository folder.
   > **Important**: Do not track `lux.sqlite` in your git repository.
@@ -391,14 +391,14 @@ Thanks.
 
 ### Late Submissions
 
-The deadline for this assignment is **11:59 PM NHT (New Haven Time) on Friday April 12, 2024**.
+The deadline for this assignment is **11:59 PM NHT (New Haven Time) on Friday April 11, 2025**.
 There is a strict 30 minute grace period beyond the deadline, to be used in case of technical or administrative difficulties, and not for putting final touches on your solution.
 
 Late submissions will receive a 5% deduction for every 12-hour period (or part thereof) after the deadline.
-After 72 hours, the Canvas assignment will close and submissions after that time will not receive any credit.
+After 48 hours, the Canvas assignment will close and submissions after that time will not receive any credit.
 
-Except for the 72-hour cutoff, late penalties will be assessed based on the timestamp of the release, not the submission time.
-Submissions after 72 hours are not accepted regardless of the timestamp on the release.
+Except for the 48-hour cutoff, late penalties will be assessed based on the timestamp of the release, not the submission time.
+Submissions after 48 hours are not accepted regardless of the timestamp on the release.
 
 ---
 
@@ -409,10 +409,9 @@ Your grade will be based upon:
 * **Style**, that is, the quality of your program style.
 This includes not only style as qualitatively assessed by the graders (including modularity, cleanliness, and performance) but also style as reported by the `pylint` tool, using the default settings, and when executed via the command `python -m pylint **/*.py`.
 
-Ten percent of your grade will be based upon the quality of your program style as reported by `pylint`.
+Part of your grade will be based upon the quality of your program style as reported by `pylint`.
 Your grader will start with the 10-point score reported by pylint.
-Your *pylint style grade* is your pylint score rounded to the nearest integer (minimum 0).
-For example, if your pylint score is 9.8, then your *pylint style grade* will be 10; if your pylint score is 7.4, then your *pylint style grade* will be 7.
+Your *pylint style grade* is your pylint score rounded **up** to the nearest integer (minimum 0).
 
 If your code fails the tests on some particular functionality, your grader will inspect your code manually to try to assign partial credit for that functionality.
 Partial credit will be given only if there is an *obvious* "quick fix" (*e.g.*, you have accidentally changed the name of the database file and your solution points to a file with a name that does not match the grader's copy of the database); if no such quick fix exists then no partial credit for that feature will be given.
@@ -421,4 +420,4 @@ Partial credit will be given only if there is an *obvious* "quick fix" (*e.g.*, 
 
 Original copyright &copy;2021 by Robert M. Dondero, Jr.
 
-Modified &copy;2024 by Alan Weide
+Modified &copy;2025 by Alan Weide
