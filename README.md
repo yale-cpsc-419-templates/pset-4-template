@@ -1,10 +1,10 @@
 # Pset 4: Web Application (Version 2)
 
-### Due Friday April 11 11:59 PM NHT (New Haven Time)
+### Due Friday Nov 14 10:59 PM NHT (New Haven Time)
 
 ## Table of Contents
 - [Pset 4: Web Application (Version 2)](#pset-4-web-application-version-2)
-    - [Due Friday April 11 11:59 PM NHT (New Haven Time)](#due-friday-april-11-1159-pm-nht-new-haven-time)
+    - [Due Friday Nov 14 10:59 PM NHT (New Haven Time)](#due-friday-april-11-1159-pm-nht-new-haven-time)
   - [Table of Contents](#table-of-contents)
   - [Purpose](#purpose)
   - [Rules](#rules)
