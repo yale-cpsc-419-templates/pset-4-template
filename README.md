@@ -1,10 +1,10 @@
 # Pset 4: Web Application (Version 2)
 
-### Due Friday Nov 14 10:59 PM NHT (New Haven Time)
+### Due Friday Nov 21 10:59 PM NHT (New Haven Time)
 
 ## Table of Contents
 - [Pset 4: Web Application (Version 2)](#pset-4-web-application-version-2)
-    - [Due Friday Nov 14 10:59 PM NHT (New Haven Time)](#due-friday-april-11-1159-pm-nht-new-haven-time)
+    - [Due Friday Nov 21 10:59 PM NHT (New Haven Time)](#due-friday-april-11-1159-pm-nht-new-haven-time)
   - [Table of Contents](#table-of-contents)
   - [Purpose](#purpose)
   - [Rules](#rules)
@@ -391,8 +391,8 @@ Thanks.
 
 ### Late Submissions
 
-The deadline for this assignment is **11:59 PM NHT (New Haven Time) on Friday April 11, 2025**.
-There is a strict 30 minute grace period beyond the deadline, to be used in case of technical or administrative difficulties, and not for putting final touches on your solution.
+The deadline for this assignment is **10:59 PM NHT (New Haven Time) on Friday November 21, 2025**.
+There is a strict 60 minute grace period beyond the deadline, to be used in case of technical or administrative difficulties, and not for putting final touches on your solution.
 
 Late submissions will receive a 5% deduction for every 12-hour period (or part thereof) after the deadline.
 After 48 hours, the Canvas assignment will close and submissions after that time will not receive any credit.
