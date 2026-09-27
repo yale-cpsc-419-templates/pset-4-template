@@ -1,11 +1,11 @@
 # Pset 4: Web Application (Version 2)
 
-### Due Friday Nov 21 10:59 PM NHT (New Haven Time)
+### Due Friday Dec 4 11:59 PM NHT (New Haven Time)
 
 ## Table of Contents
 
 - [Pset 4: Web Application (Version 2)](#pset-4-web-application-version-2)
-  - [Due Friday Nov 21 10:59 PM NHT (New Haven Time)](#due-friday-nov-21-1059-pm-nht-new-haven-time)
+  - [Due Friday Dec 4 11:59 PM NHT (New Haven Time)](#due-friday-dec-4-1159-pm-nht-new-haven-time)
   - [Table of Contents](#table-of-contents)
   - [Purpose](#purpose)
   - [Rules](#rules)
@@ -18,7 +18,7 @@
     - [Filtering Requirements](#filtering-requirements)
     - [The Details Page](#the-details-page)
   - [The Yale Courses API](#the-yale-courses-api)
-  - [Bonus: Build `reg.sqlite` from the API](#bonus-build-regsqlite-from-the-api)
+  - [Bonus: Build](#bonus-build-regsqlite-from-the-api) `reg.sqlite` [from the API](#bonus-build-regsqlite-from-the-api)
   - [Additional Requirements for 519 Students](#additional-requirements-for-519-students)
     - [Additional Features](#additional-features)
   - [A Note About Performance](#a-note-about-performance)
@@ -27,8 +27,8 @@
   - [Error Handling: Bad Server](#error-handling-bad-server)
   - [Error Handling: Bad Client](#error-handling-bad-client)
     - [Invalid search parameters](#invalid-search-parameters)
-    - [Invalid `crn`](#invalid-crn)
-    - [Missing `crn`](#missing-crn)
+    - [Invalid](#invalid-crn) `crn`
+    - [Missing](#missing-crn) `crn`
     - [Aside: Error Pages](#aside-error-pages)
     - [Other invalid requests](#other-invalid-requests)
   - [Source Code Guide](#source-code-guide)
@@ -36,11 +36,15 @@
     - [Late Submissions](#late-submissions)
   - [Grading](#grading)
 
+
+
 ## Purpose
 
 The purpose of this assignment is to help you learn or review client-side web programming.
 
 ---
+
+
 
 ## Rules
 
@@ -52,16 +56,19 @@ Your `README` file and your source code files must contain your name and your te
 
 ---
 
+
+
 ## Getting Started
 
 > **Note**: this section contains exactly the text on the Canvas assignment, reproduced here only for completeness of this document.
 > Since you made it here, you can safely ignore this section.
 
 1. Accept the GitHub classroom assignment.
-
 2. The `reg.sqlite` database file is included in your GitHub repository, so no separate download or setup is required.
 
 ---
+
+
 
 ## Your Task
 
@@ -79,6 +86,8 @@ Your application may not use any other client-side library or framework (such as
 
 ---
 
+
+
 ## The Database
 
 The database is identical to the one from Psets 1, 2, and 3.
@@ -91,6 +100,8 @@ Some courses have several sections, several meetings, several professors, or non
 
 ---
 
+
+
 ## Background
 
 The application you built in Pset 3 is flawed.
@@ -99,14 +110,16 @@ The flaw is not in your implementation; instead the flaw (intentionally) is in t
 The problem is that an application that conforms to that specification often has inconsistent page states.
 For example, consider the following sequence of events:
 
-* The user browses to your website and the browser displays your application's primary page
-* The user types "web" into the "title" input element, but is distracted before the search runs
-* Sometime later the user returns to the page
+- The user browses to your website and the browser displays your application's primary page
+- The user types "web" into the "title" input element, but is distracted before the search runs
+- Sometime later the user returns to the page
 
 At that point the page's "title" input element contains "web" but the page displays no data.
 This is an inconsistent state, and it is a problem that you will fix in this assignment.
 
 ---
+
+
 
 ## The Application
 
@@ -136,29 +149,28 @@ Your `runserver.py` must run an instance of the Flask test server on the specifi
 When a client makes an HTTP request to the server, your application must return an HTML webpage appropriate to the request.
 Beyond some [specific endpoints](#specific-endpoints) mentioned below, there are several requirements your application must satisfy:
 
-* Your application's **primary web page** (*i.e.*, the webpage returned by a request to the server's root&mdash;*e.g.* `http://yourserver:80/` if your server is listening on port 80) must contain four text input fields labeled "dept", "coursenum", "subjectcode", and "title".
-  These should, respectively, allow the user to specify a department code, a course number, a subject code, and a title.
-  * In contrast to the form from Pset 3, your primary page must *not* contain a submit button.
-  * The input fields must be filled in with the parameters used to make the most recent query, that is, the values of the input fields as they were upon the most recent query (if a query has never been performed, those fields should be empty)
-* Below the input fields, the webpage must display an HTML `table` containing no more than the first 1000 results of the most recent query (or nothing at all if no query has yet been sent)
+- Your application's **primary web page** (*i.e.*, the webpage returned by a request to the server's root&mdash;*e.g.* `http://yourserver:80/` if your server is listening on port 80) must contain four text input fields labeled "dept", "coursenum", "subjectcode", and "title".
+These should, respectively, allow the user to specify a department code, a course number, a subject code, and a title.
+  - In contrast to the form from Pset 3, your primary page must *not* contain a submit button.
+  - The input fields must be filled in with the parameters used to make the most recent query, that is, the values of the input fields as they were upon the most recent query (if a query has never been performed, those fields should be empty)
+- Below the input fields, the webpage must display an HTML `table` containing no more than the first 1000 results of the most recent query (or nothing at all if no query has yet been sent)
+
+
 
 ### Output Requirements
 
 The columns displayed in the table must be, in order, `deptname`, `subjectcode`, `coursenum`, `title`, and `crns`, for each course that matches the specified criteria, or for all courses in the database if the user specifies no criteria.
 The columns must be labeled "deptname", "subjectcode", "coursenum", "title", and "crns".
 
-* The `deptname` column contains the department name from the `departments` table.
-* The `subjectcode`, `coursenum`, and `title` columns each match the corresponding field of the course.
-* The `crns` column contains the `crn` of each section associated with the course, one CRN per line, sorted in increasing order.
-* There is one table row per course. Repeat `deptname`, `subjectcode`, `coursenum`, and `title` on that row, and list every CRN of the course in the `crns` cell.
-* The table rows must be sorted first by `deptcode` in ascending order, then by `subjectcode` in ascending order, then by `coursenum` in ascending order, and finally by `title` in ascending order.
-* A user must be able to click on a `crn` to request more information about that section on a different webpage (the details page) at the url `/crn/{crn}`.
-  The requirements for the details page are below.
-
+- The `deptname` column contains the department name from the `departments` table.
+- The `subjectcode`, `coursenum`, and `title` columns each match the corresponding field of the course.
+- The `crns` column contains the `crn` of each section associated with the course, one CRN per line, sorted in increasing order.
+- There is one table row per course. Repeat `deptname`, `subjectcode`, `coursenum`, and `title` on that row, and list every CRN of the course in the `crns` cell.
+- The table rows must be sorted first by `deptcode` in ascending order, then by `subjectcode` in ascending order, then by `coursenum` in ascending order, and finally by `title` in ascending order.
+- A user must be able to click on a `crn` to request more information about that section on a different webpage (the details page) at the url `/crn/{crn}`.
+The requirements for the details page are below.
   > **Note**: The course's internal `courseid` must not be displayed in the table.
-
-* The results table on the primary webpage must be updated every time the user types a character in any of the four input fields
-
+- The results table on the primary webpage must be updated every time the user types a character in any of the four input fields
   > **Note**: You're required to use JavaScript and AJAX to accomplish this, and we recommend you use jQuery as well to keep your code concise and easy to understand.
 
 For example, a search with dept `cpsc` and coursenum `4190` includes a row such as:
@@ -183,12 +195,14 @@ An empty field does not constrain the query.
 If a query has been made and every field is empty, the result is every course in the database, up to the 1000-row limit, in the sort order above.
 Before any query has been made, the page shows no results table.
 
-| Field | Meaning |
-| --- | --- |
-| dept | Include courses whose `deptcode` contains the supplied value. |
-| coursenum | Include courses whose `coursenum` contains the supplied value. |
+
+| Field       | Meaning                                                          |
+| ----------- | ---------------------------------------------------------------- |
+| dept        | Include courses whose `deptcode` contains the supplied value.    |
+| coursenum   | Include courses whose `coursenum` contains the supplied value.   |
 | subjectcode | Include courses whose `subjectcode` contains the supplied value. |
-| title | Include courses whose `title` contains the supplied value. |
+| title       | Include courses whose `title` contains the supplied value.       |
+
 
 If several fields are non-empty, combine the filters using `AND`.
 Filters must be case-insensitive: a title field containing `web` must match a title such as "Full Stack Web Programming".
@@ -199,35 +213,35 @@ Filters must preserve leading and trailing whitespace.
 Your application must accept requests to the endpoint `/crn/<crn>` (where `crn` is the CRN of the clicked-on section).
 The webpage returned at this endpoint must show the same information, in the same sections, as `regdetails.py` from Pset 1 for that `crn`:
 
-* A section containing a single-row HTML table with the columns `deptcode`, `deptname`, `subjectcode`, and `coursenum`
-* A section with header `title`, containing the course title
-* A section with header `descrip`, containing the course description, or the string `None` if there is no description
-* A section with header `prereqs`, containing the course prerequisites, or the string `None` if there are no prerequisites
-* An HTML table with the columns `sectionnumber`, `crn`, and `meetinginfo`
-  * Include every meeting of every section of the course associated with the requested `crn`
-  * Each meeting must be formatted as the meeting time, followed by ` @ `, followed by the meeting location, for example `MW 9.00-10.15 @ WTS A74`
-  * Put one meeting on each line
-* An HTML table of crosslistings, with the columns `subjectcode` and `coursenum`
-* A section with header `professors`, containing each professor's `profname`, one per line
+- A section containing a single-row HTML table with the columns `deptcode`, `deptname`, `subjectcode`, and `coursenum`
+- A section with header `title`, containing the course title
+- A section with header `descrip`, containing the course description, or the string `None` if there is no description
+- A section with header `prereqs`, containing the course prerequisites, or the string `None` if there are no prerequisites
+- An HTML table with the columns `sectionnumber`, `crn`, and `meetinginfo`
+  - Include every meeting of every section of the course associated with the requested `crn`
+  - Each meeting must be formatted as the meeting time, followed by `@`, followed by the meeting location, for example `MW 9.00-10.15 @ WTS A74`
+  - Put one meeting on each line
+- An HTML table of crosslistings, with the columns `subjectcode` and `coursenum`
+- A section with header `professors`, containing each professor's `profname`, one per line
 
 > **Note**: The description and prerequisites strings for some courses contain HTML.
 > That HTML must be rendered according to the included elements.
 
-* Its information must be well-formatted (*e.g.*, the headers must be within semantic HTML `<h`*`N`*`>` header elements, and the lists must be within HTML `<ul>` elements)
-* Unlike Pset 3, the details page must not provide a link back to the primary webpage.
-  Instead, the details page must be displayed by default in a **new** tab or window.
-
+- Its information must be well-formatted (*e.g.*, the headers must be within semantic HTML `<hN>` header elements, and the lists must be within HTML `<ul>` elements)
+- Unlike Pset 3, the details page must not provide a link back to the primary webpage.
+Instead, the details page must be displayed by default in a **new** tab or window.
   > **Note**: Read about the `target="_blank"` attribute of the `a` element
-
-* The default styling of an HTML table is quite ugly.
-  Use CSS to spruce up your tables:
-  * Add padding of `5px` to all sides of every cell in each table
-  * Add a `1px` wide `gray` border between rows of each table
-  * When the mouse hovers over a particular row of each table, change that row's background color to `lightgray`
-  * You are free to style your application in any other manner that looks good to you (but nothing else is required)
-  * Place your CSS into a file named `styles.css` that is loaded by your primary and details webpages, but not included directly in those pages
+- The default styling of an HTML table is quite ugly.
+Use CSS to spruce up your tables:
+  - Add padding of `5px` to all sides of every cell in each table
+  - Add a `1px` wide `gray` border between rows of each table
+  - When the mouse hovers over a particular row of each table, change that row's background color to `lightgray`
+  - You are free to style your application in any other manner that looks good to you (but nothing else is required)
+  - Place your CSS into a file named `styles.css` that is loaded by your primary and details webpages, but not included directly in those pages
 
 ---
+
+
 
 ## The Yale Courses API
 
@@ -236,9 +250,9 @@ The application must also retrieve course data from the Yale Courses API and mus
 
 Cache the retrieved API data in one of these ways:
 
-* a global variable initialized at server startup
-* a global variable initialized on the first request to the server
-* one or more local files that the program reads when it receives a request
+- a global variable initialized at server startup
+- a global variable initialized on the first request to the server
+- one or more local files that the program reads when it receives a request
 
 The cache must include the subjects available from the Subjects API.
 A program that never queries the Subjects API, and that has no cached information about those subjects, does not meet this requirement.
@@ -249,6 +263,8 @@ Display meetings from the API in the same `meeting time @ meeting location` form
 
 ---
 
+
+
 ## Bonus: Build `reg.sqlite` from the API
 
 This part is optional.
@@ -257,15 +273,17 @@ Write a program that retrieves data from the Yale Courses API and stores it in a
 
 A complete database:
 
-* contains every course from every school and every subject returned by the API
-* matches the provided `reg.sqlite` file, aside from changes in the API data since that file was built
-* stores meeting times and locations, crosslistings, professors, and departments
-* stores department names with the department code concatenated, in the same form as the provided database, for example `Computer Science (CPSC)`
+- contains every course from every school and every subject returned by the API
+- matches the provided `reg.sqlite` file, aside from changes in the API data since that file was built
+- stores meeting times and locations, crosslistings, professors, and departments
+- stores department names with the department code concatenated, in the same form as the provided database, for example `Computer Science (CPSC)`
 
 A database that is otherwise complete, but that stores the department name without the concatenated department code, still meets the goal of this bonus.
 A database that contains only some schools, for example only Yale College and the Summer Session, does not.
 
 ---
+
+
 
 ## Additional Requirements for 519 Students
 
@@ -280,34 +298,34 @@ They will not have any bearing on your grade for this assignment, but they will 
 
 If you *or your partner* are enrolled in CPSC 519, you must implement the following additional feature.
 
-* Large result sets are cumbersome for a user to scroll through.
-  A standard technique to reduce the burden on users is **pagination**.
-  A paginated results table would display only *k* items at a time, and display a row of buttons that the user could use to go to the next page or previous page (or even a particular page)
-  * You are required to implement pagination for your app, which must display no more than `10` items per page, and you must provide a button to go to the next page and a button to go to the previous page
-    * Optionally, also display individual page numbers so that the user can jump to a specific page
-    * Optionally, also display a "first page" and "last page" button
-  * The buttons must be disabled as appropriate if the user is on the first or last page of results
-  * Each page of results must display the column headers
-  * Results must still be limited to the first 1000 courses (*i.e.*, 100 pages)
-
+- Large result sets are cumbersome for a user to scroll through.
+A standard technique to reduce the burden on users is **pagination**.
+A paginated results table would display only *k* items at a time, and display a row of buttons that the user could use to go to the next page or previous page (or even a particular page)
+  - You are required to implement pagination for your app, which must display no more than `10` items per page, and you must provide a button to go to the next page and a button to go to the previous page
+    - Optionally, also display individual page numbers so that the user can jump to a specific page
+    - Optionally, also display a "first page" and "last page" button
+  - The buttons must be disabled as appropriate if the user is on the first or last page of results
+  - Each page of results must display the column headers
+  - Results must still be limited to the first 1000 courses (*i.e.*, 100 pages)
   > **Hint**: You may have to modify somewhat the response from your server to make this feature feasible to implement.
   > In particular, if you return an HTML table from the server in response to a search request, that may be challenging to slice up into pages.
   > However, if you return a JSON list of courses, there are built-in JavaScript functions that will help you pick out chunks of the list.
 
 If you *and your partner* are enrolled in CPSC 519, you must implement the following additional feature.
 
-* The sorting algorithm required by your program is quite inflexible, and it would be nice if users could sort results however they want.
-  * Make (part of) the column header cells clickable, and respond to a click in a column header by sorting the results in ascending order of the values in that column
-    * Ties must be broken by the Pset 1 sort: `deptcode`, then `subjectcode`, then `coursenum`, then `title`
-    * Sorting by the `crns` column must be done by the **first** CRN in the list
-  * The reordering **must be done locally**, and clicking the header may not send a request to the server
-  * Provide some visual indication in the column header when its data is in sorted order. Options include adding an asterisk, changing the color, etc.
-
+- The sorting algorithm required by your program is quite inflexible, and it would be nice if users could sort results however they want.
+  - Make (part of) the column header cells clickable, and respond to a click in a column header by sorting the results in ascending order of the values in that column
+    - Ties must be broken by the Pset 1 sort: `deptcode`, then `subjectcode`, then `coursenum`, then `title`
+    - Sorting by the `crns` column must be done by the **first** CRN in the list
+  - The reordering **must be done locally**, and clicking the header may not send a request to the server
+  - Provide some visual indication in the column header when its data is in sorted order. Options include adding an asterisk, changing the color, etc.
   > **Hint**: You may have to modify somewhat the response from your server to make this feature feasible to implement.
   > In particular, if you return an HTML table from the server in response to a search request, that will be challenging to reorder.
   > However, if you return a JSON list of courses, there are built-in JavaScript functions that will help you sort things.
 
 ---
+
+
 
 ## A Note About Performance
 
@@ -325,6 +343,8 @@ SQLite does, in a sense, [support materialization](https://www.sqlite.org/lang_w
 
 ---
 
+
+
 ## Object-Relational Mappers
 
 For this assignment, you may use the [SQLAlchemy ORM](https://www.sqlalchemy.org/) to aid you in your SQL queries.
@@ -332,19 +352,23 @@ You are not required to do so, but as with the additional activities for 519 stu
 
 ---
 
+
+
 ## Specific Endpoints
 
 There are three endpoints to which your application must respond (assume your server is listening on port 80):
 
 1. `http://yourserver:80/` must return the primary page
 2. `http://yourserver:80/search?...` must return the results of a search using the parameters in the query string
-   * Requests to the `/search` endpoint need not be standalone HTML webpages. You might find it easiest to implement the rest of the assignment if this endpoint returns results structured as JSON.
-   * The parameters accepted by the `/search` endpoint must be `d` (for the department code), `n` (for the course number), `s` (for the subject code), and `t` (for the title)
+  - Requests to the `/search` endpoint need not be standalone HTML webpages. You might find it easiest to implement the rest of the assignment if this endpoint returns results structured as JSON.
+  - The parameters accepted by the `/search` endpoint must be `d` (for the department code), `n` (for the course number), `s` (for the subject code), and `t` (for the title)
 3. `http://yourserver:80/crn/<crn>` must return the details page populated with information about the section with the `crn` provided in the path.
 
 Students completing the [additional 519 activities](#additional-requirements-for-519-students) may add endpoints to accomplish some of those tasks, but the exact names of those endpoints are not specified.
 
 ---
+
+
 
 ## Error Handling: Bad Server
 
@@ -352,11 +376,13 @@ Since you control the machine that is running both the server application and th
 There are two errors that your program must handle gracefully.
 
 1. The server is started with a port that is not a positive integer.
-   If the server is started with a command such as `$ python runserver.py notaport`, it should display a meaningful error message and exit with status code `1`.
+  If the server is started with a command such as `$ python runserver.py notaport`, it should display a meaningful error message and exit with status code `1`.
 2. The database file does not exist.
-   If the server attempted to open the `reg.sqlite` file but the file does not exist (or otherwise cannot be opened), your program should display a meaningful error message and exit with status code `1`.
+  If the server attempted to open the `reg.sqlite` file but the file does not exist (or otherwise cannot be opened), your program should display a meaningful error message and exit with status code `1`.
 
 ---
+
+
 
 ## Error Handling: Bad Client
 
@@ -391,67 +417,70 @@ The page displayed should clearly indicate an error occurred, but the URL in the
 
 There are many other requests that the user could send that are "wrong", such as:
 
-* `http://yourserver:notyourport/`
-* `http://yourserver:80/notyourapp`
-* `http://yourserver:80/search?not/well/formed/url`
+- `http://yourserver:notyourport/`
+- `http://yourserver:80/notyourapp`
+- `http://yourserver:80/search?not/well/formed/url`
 
 The only requirement placed on your server in these cases (and similar ones) is that it does not crash when queried with such requests; that is, if the user sends a valid request immediately after an invalid one, the valid request must get the correct result.
 
 ---
 
+
+
 ## Source Code Guide
 
 Here are the **requirements** for the source code of your solution.
 
-* The `runserver.py` program must start a Flask server for your application on the port provided as a command-line argument, listening on all IP addresses
-* Your application program must communicate with a SQLite database in a file named `reg.sqlite`, organized as described above.
-  * If you explore other DBMSes, you may communicate with databases named other things or that are not SQLite databases, but you must document installation instructions in your submitted `README` file so the graders know what is going on.
-* Your application program must use SQL prepared statements for every database query.
-  (This protects the database against SQL injection attacks.)
-  * If you use SQLAlchemy, that ORM automatically performs statement preparation and there is nothing special you need to do for this requirement.
-* Use cookies to keep track of the application's state
-* Your webpage must use JavaScript to update only part of the webpage in response to the user typing in the search boxes.
+- The `runserver.py` program must start a Flask server for your application on the port provided as a command-line argument, listening on all IP addresses
+- Your application program must communicate with a SQLite database in a file named `reg.sqlite`, organized as described above.
+  - If you explore other DBMSes, you may communicate with databases named other things or that are not SQLite databases, but you must document installation instructions in your submitted `README` file so the graders know what is going on.
+- Your application program must use SQL prepared statements for every database query.
+(This protects the database against SQL injection attacks.)
+  - If you use SQLAlchemy, that ORM automatically performs statement preparation and there is nothing special you need to do for this requirement.
+- Use cookies to keep track of the application's state
+- Your webpage must use JavaScript to update only part of the webpage in response to the user typing in the search boxes.
 
 Here are some **recommendations** for the source code of your solution.
 
-* Reuse code from your solution to Pset 3 in this assignment.
-* Modularize your application program so that database communication code is cleanly separated from response production code.
-  * Use HTML templates to keep your response production code as clear as possible
-  * Structure your code according to MVC design principles (the HTML templates are your Views)
-* You may use external dependencies, but we advise you not to (with the obvious exception of `flask`).
-  This assignment is designed such that everything can be accomplished without too much pain using only packages from the Python standard library.
+- Reuse code from your solution to Pset 3 in this assignment.
+- Modularize your application program so that database communication code is cleanly separated from response production code.
+  - Use HTML templates to keep your response production code as clear as possible
+  - Structure your code according to MVC design principles (the HTML templates are your Views)
+- You may use external dependencies, but we advise you not to (with the obvious exception of `flask`).
+This assignment is designed such that everything can be accomplished without too much pain using only packages from the Python standard library.
 
 ---
+
+
 
 ## Submission
 
 Replace the provided `README.md` file (which contains this assignment specification) with your own `README.md` file that conforms to the following requirements.
 
 1. Leave the first line of the file alone (it is the assignment title).
-
 2. Thereafter your `README.md` file must contain:
-   * Your name and Yale netid and your teammate’s name and Yale netid (if you worked with a partner)
-     * Also indicate here whether you and your teammate are enrolled in 419 or 519
-   * A paragraph describing your contribution, and another paragraph describing your teammate’s contribution.
-     Please be thorough; we are looking for two substantial paragraphs, not a sentence or two.
-   * A description of whatever help (if any) you received from other people while doing the assignment.
-   * A description of the sources of information that you used while doing the assignment, that are not direct help from other people.
-   * An indication of how much time you spent doing the assignment, rounded to the nearest hour.
-   * Your assessment of the assignment:
-     * Did it help you to learn?
-     * What did it help you to learn?
-     * Do you have any suggestions for improvement? *Etc.*
-   * (Optionally) Any information that will help us to grade your work in the most favorable light.
-     * In particular, describe all known bugs and explain why any `pylint` style warnings you received are unavoidable or why you know better than `pylint` (a convincing argument might negate some `pylint` style penalties you may accrue).
-     * You should also describe any installation instructions here if you use a non-SQLite DBMS, including instructions on how to retrieve the data
+  - Your name and Yale netid and your teammate’s name and Yale netid (if you worked with a partner)
+    - Also indicate here whether you and your teammate are enrolled in 419 or 519
+  - A paragraph describing your contribution, and another paragraph describing your teammate’s contribution.
+  Please be thorough; we are looking for two substantial paragraphs, not a sentence or two.
+  - A description of whatever help (if any) you received from other people while doing the assignment.
+  - A description of the sources of information that you used while doing the assignment, that are not direct help from other people.
+  - An indication of how much time you spent doing the assignment, rounded to the nearest hour.
+  - Your assessment of the assignment:
+    - Did it help you to learn?
+    - What did it help you to learn?
+    - Do you have any suggestions for improvement? *Etc.*
+  - (Optionally) Any information that will help us to grade your work in the most favorable light.
+    - In particular, describe all known bugs and explain why any `pylint` style warnings you received are unavoidable or why you know better than `pylint` (a convincing argument might negate some `pylint` style penalties you may accrue).
+    - You should also describe any installation instructions here if you use a non-SQLite DBMS, including instructions on how to retrieve the data
 
 Your `README.md` file must be a plain text file.
 **Do not** create your `README.md` file using Microsoft Word or any other word processor, although it may be formatted using [markdown](https://www.markdownguide.org/), like this provided `README.md` file.
 
 Package your assignment files by [creating a release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release) on GitHub in your assignment repository. There must be at least two files with the following (exact) names in that repository when you submit it:
 
-* `README.md`
-* `runserver.py`
+- `README.md`
+- `runserver.py`
 
 Ensure that any additional files needed by your program (such as other Python modules, HTML templates, or CSS files) are in the repository snapshot (*i.e.*, commit) captured by the release.
 
@@ -487,13 +516,15 @@ Submissions after 48 hours are not accepted regardless of the timestamp on the r
 
 ---
 
+
+
 ## Grading
 
 Your grade will be based upon:
 
-* **Correctness**, that is, the correctness of your programs as specified by this document.
-* **Style**, that is, the quality of your program style.
-  This includes not only style as qualitatively assessed by the graders (including modularity, cleanliness, and performance) but also style as reported by the `pylint` tool, using the default settings, and when executed via the command `python -m pylint **/*.py`.
+- **Correctness**, that is, the correctness of your programs as specified by this document.
+- **Style**, that is, the quality of your program style.
+This includes not only style as qualitatively assessed by the graders (including modularity, cleanliness, and performance) but also style as reported by the `pylint` tool, using the default settings, and when executed via the command `python -m pylint **/*.py`.
 
 Part of your grade will be based upon the quality of your program style as reported by `pylint`.
 Your grader will start with the 10-point score reported by pylint.
