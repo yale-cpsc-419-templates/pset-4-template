@@ -1,11 +1,11 @@
 # Pset 4: Web Application (Version 2)
 
-### Due Friday Dec 4 11:59 PM NHT (New Haven Time)
+### Due Friday Nov 20 10:59 PM NHT (New Haven Time)
 
 ## Table of Contents
 
 - [Pset 4: Web Application (Version 2)](#pset-4-web-application-version-2)
-  - [Due Friday Dec 4 11:59 PM NHT (New Haven Time)](#due-friday-dec-4-1159-pm-nht-new-haven-time)
+  - [Due Friday Nov 20 10:59 PM NHT (New Haven Time)](#due-friday-nov-20-1059-pm-nht-new-haven-time)
   - [Table of Contents](#table-of-contents)
   - [Purpose](#purpose)
   - [Rules](#rules)
@@ -505,7 +505,7 @@ Thanks.
 
 ### Late Submissions
 
-The deadline for this assignment is **10:59 PM NHT (New Haven Time) on Friday November 21, 2025**.
+The deadline for this assignment is **10:59 PM NHT (New Haven Time) on Friday November 20, 2026**.
 There is a strict 60 minute grace period beyond the deadline, to be used in case of technical or administrative difficulties, and not for putting final touches on your solution.
 
 Late submissions will receive a 5% deduction for every 12-hour period (or part thereof) after the deadline.
